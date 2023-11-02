@@ -1,0 +1,11 @@
+Dictionary explaining the meaning of all of the column names
+- Sample: is the identification code for each sample
+- Date : shows the date of the sampling
+- Day : redundant date column
+- Time : time of encounter
+- e2 : concentration of e2 in the turtle plasma
+- t : concentration of testosterone in turtle plasma
+- vtg : concentration of plasma vtg
+- Output : number of eggs laid by female turtle
+- Curved carapace length : measurment in cm of the curved carapace length
+- Straight carapace length : measurment in cm of the straight carapace length

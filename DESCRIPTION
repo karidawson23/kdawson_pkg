@@ -1,0 +1,22 @@
+Package: dawson.pkg
+Title: An R package for proccessing sea turtle nesting data
+Version: 0.1
+Authors@R: c(
+  person(given = "kari",
+          family = "Dawson",
+          role = c("cre", "aut"),
+          email = "kari.dawson@selu.edu")
+          )
+Description: This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different biomarkers and reproductive output and carapce size. It can even show individule turtle nesting data. This package also has the capacity to run a 4 parametric logistic scale anaylisis for those who are running some sort of assay. 
+license: MIT + file LICENSE 
+Depends: 
+  R (>= 2.10)
+Imports:
+  tidyverse, broom, ggplot2
+RoxygenNote: 7.1.1   
+Suggests: 
+  knitr,
+  markdown
+VignetteBuilder: knitr
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)

@@ -9,12 +9,12 @@ perform_anova_and_lm <- function(data, dependent_var, independent_var) {
   return(list(ANOVA = anova_result, LM = summary(lm_result)))
 }
 
-results <- perform_anova_and_lm(data, DependentVar, IndependentVar)
+#results <- perform_anova_and_lm(data, DependentVar, IndependentVar)
 
-print("ANOVA Results:")
-print(results$ANOVA)
-print("\nLinear Regression Results:")
-print(results$LM)
+#print("ANOVA Results:")
+#print(results$ANOVA)
+#print("\nLinear Regression Results:")
+#print(results$LM)
 
 
 

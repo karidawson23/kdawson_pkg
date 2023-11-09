@@ -1,4 +1,4 @@
-library(ggplot2)
+#library(ggplot2)
 
 create_bar_plot <- function(data, x_var, y_var, title = "Bar Plot", x_label = NULL, y_label = NULL) {
 
@@ -8,7 +8,6 @@ labs(title = title, x = x_label, y = y_label)
 
 print(plot)
 }
-
-
  
+
 # this funtion will create a bar plot form my data

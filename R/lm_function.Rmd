@@ -1,0 +1,22 @@
+---
+title: "lm_function"
+output: html_document
+date: "2023-11-14"
+---
+```{r}
+lm_function <- funtion(df, dep, indep){
+  df %>% 
+  if(any(is.numeric({{dep}}))) {
+    return_summary <- df %>% 
+      selct(a = quo_name(dep), starts_with(indep)) %>% 
+      lm(a ~ ., data = .) %>% 
+      summary()
+    return(return_summary)
+  }
+  
+  
+}
+
+
+
+```

@@ -1,7 +1,6 @@
-#' Omit the na from data set
+#' Omit the N/A from a column of data
 #' 
-#' Use the length, width, height of an object to calculate its density.
-#' Returns density as a floating point number.
+#'  
 #' 
 #' @param len Length of the object 
 #' @param width Width of the object 

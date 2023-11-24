@@ -1,0 +1,12 @@
+---
+title: "Tutorial"
+output: html_document
+date: "2023-11-09"
+---
+
+```{r}
+> library(googlesheets4)
+> googlesheets4::gs4_deauth()
+> drago <- read_sheet("https://docs.google.com/spreadsheets/d/1inuh6gbKDD46Sw8_bcE0soiMLsuV6llp24-dDbYZMhg/edit?usp=sharing")
+
+```

@@ -8,15 +8,16 @@ Authors@R: c(
           email = "kari.dawson@selu.edu")
           )
 Description: This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different biomarkers and reproductive output and carapce size. It can even show individule turtle nesting data. This package also has the capacity to run a 4 parametric logistic scale anaylisis for those who are running some sort of assay. 
-License: MIT + file LICENSE 
-Depends: 
-  R (>= 2.10)
-Imports:
-  tidyverse, broom, ggplot2
+License: MIT + file LICENSE
+Depends: R (>= 2.10)
+Imports: tidyverse, broom, ggplot2
 RoxygenNote: 7.2.3
-Suggests: 
-  knitr,
-  markdown
+Suggests: knitr, markdown
 VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
+NeedsCompilation: no
+Packaged: 2023-11-14 20:26:26 UTC; r2159809
+Author: Kari Dawson [cre, aut]
+Maintainer: Kari Dawson <kari.dawson@selu.edu>
+Built: R 4.3.1; ; 2023-11-14 20:26:30 UTC; unix

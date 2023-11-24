@@ -1,0 +1,2 @@
+clean                   Omit the na from data set
+create_bar_plot         Creates a bar plot

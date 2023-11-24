@@ -1,5 +1,3 @@
-#This function will create a plot of the gps coordinates of the nests along the beach in panama 
-
 #' Creates a bar plot
 #' 
 #' Use the length, width, height of an object to calculate its density.
@@ -12,18 +10,15 @@
 #'
 #'@export
 #library(ggplot2)
-#library(dplyr)
-#library(rotl)
-#library(rgbif)
-#library(leaflet)
-#library(tidyverse)
 
+create_bar_plot <- function(data, x_var, y_var, title = "Bar Plot", x_label = NULL, y_label = NULL) {
 
+plot <- ggplot(data, aes(x = {{x_var}}, y = {{y_var}})) +
+geom_bar(stat = "identity", fill = "dodgerblue") +
+labs(title = title, x = x_label, y = y_label)
 
+print(plot)
+}
+ 
 
-
-
-
-
-
-
+# this funtion will create a bar plot form my data

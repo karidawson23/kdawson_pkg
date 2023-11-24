@@ -1,6 +1,4 @@
-#This function will create a plot of the gps coordinates of the nests along the beach in panama 
-
-#' Creates a bar plot
+#' Omit the na from data set
 #' 
 #' Use the length, width, height of an object to calculate its density.
 #' Returns density as a floating point number.
@@ -11,19 +9,13 @@
 #' @return density The density of the object (numeric)
 #'
 #'@export
-#library(ggplot2)
-#library(dplyr)
-#library(rotl)
-#library(rgbif)
-#library(leaflet)
-#library(tidyverse)
 
 
+clean <- function(data, column) { 
+  new <- data %>% 
+    na.omit 
+  return(new)
+}
 
-
-
-
-
-
-
+#this function will remove na's from the data set
 

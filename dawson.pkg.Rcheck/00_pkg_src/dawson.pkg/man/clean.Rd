@@ -2,7 +2,7 @@
 % Please edit documentation in R/remove_na_function.R
 \name{clean}
 \alias{clean}
-\title{Omit the na from data set}
+\title{Omit the N/A from a column of data}
 \usage{
 clean(data, column)
 }
@@ -17,6 +17,5 @@ clean(data, column)
 density The density of the object (numeric)
 }
 \description{
-Use the length, width, height of an object to calculate its density.
-Returns density as a floating point number.
+Omit the N/A from a column of data
 }

@@ -1,9 +1,4 @@
-#This function will create a plot of the gps coordinates of the nests along the beach in panama 
-
-#' Creates a bar plot
-#' 
-#' Use the length, width, height of an object to calculate its density.
-#' Returns density as a floating point number.
+#'This function will create a plot of the gps coordinates of the nests along the beach in panama 
 #' 
 #' @param len Length of the object 
 #' @param width Width of the object 
@@ -11,6 +6,7 @@
 #' @return density The density of the object (numeric)
 #'
 #'@export
+#'
 #library(ggplot2)
 #library(dplyr)
 #library(rotl)
@@ -18,7 +14,17 @@
 #library(leaflet)
 #library(tidyverse)
 
+map_nests <- function(data, longitude, latitude){
+  map <- leaflet::leaflet(data) %>% 
+  addTiles() %>% 
+  addMarkers(~longitude, ~latitude, popup = data$nestcode)
+  
+  map_nests()
+}
 
+#leaflet(no_na) %>%
+#addTiles() %>% 
+ # addMarkers(~decimalLongitude, ~decimalLatitude, clusterOptions = markerClusterOptions())
 
 
 

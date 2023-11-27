@@ -1,2 +1,3 @@
 clean	clean
 create_bar_plot	create_bar_plot
+perform_anova_and_lm	perform_anova_and_lm

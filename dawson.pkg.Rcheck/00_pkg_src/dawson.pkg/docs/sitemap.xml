@@ -13,12 +13,24 @@
     <loc>/articles/index.html</loc>
   </url>
   <url>
+    <loc>/articles/tutorial.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/clean.html</loc>
+  </url>
+  <url>
+    <loc>/reference/create_bar_plot.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/perform_anova_and_lm.html</loc>
   </url>
 </urlset>

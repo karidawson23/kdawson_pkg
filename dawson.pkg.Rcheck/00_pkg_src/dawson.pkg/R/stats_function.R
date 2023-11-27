@@ -1,25 +1,22 @@
-#' Omit the na from data set
+#' Perform data analysis on data set to test for significance 
 #' 
-#' Use the length, width, height of an object to calculate its density.
-#' Returns density as a floating point number.
 #' 
-#' @param len Length of the object 
-#' @param width Width of the object 
-#' @param height Height of the object
+#' @param data Length of the object 
+#' @param dependent_var Width of the object 
+#' @param independent_var Height of the object
+#' 
 #' @return density The density of the object (numeric)
 #'
 #'@export
 #'
 
 perform_anova_and_lm <- function(data, dependent_var, independent_var){
-  # Perform ANOVA
   anova_result <- anova(lm({{dependent_var}} ~ {{independent_var}}, data = data))
-  
-  # Perform linear regression
   lm_result <- lm({{dependent_var}} ~ {{independent_var}}, data = data)
-  
-  # Return a list containing the ANOVA and lm results
   return(list(ANOVA = anova_result, LM = summary(lm_result)))
+  
+  print(anova_result)
+  print(lm_result)
 }
 
 #results <- perform_anova_and_lm(data, DependentVar, IndependentVar)

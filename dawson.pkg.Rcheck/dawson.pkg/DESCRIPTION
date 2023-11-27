@@ -17,7 +17,7 @@ VignetteBuilder: knitr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 NeedsCompilation: no
-Packaged: 2023-11-14 20:26:26 UTC; r2159809
+Packaged: 2023-11-27 07:11:05 UTC; r2159809
 Author: Kari Dawson [cre, aut]
 Maintainer: Kari Dawson <kari.dawson@selu.edu>
-Built: R 4.3.1; ; 2023-11-14 20:26:30 UTC; unix
+Built: R 4.3.1; ; 2023-11-27 07:11:09 UTC; unix

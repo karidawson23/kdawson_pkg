@@ -2,6 +2,6 @@ pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  NestingFamiltTutorial: NestingFamiltTutorial.html
-last_built: 2023-10-31T20:18Z
+  tutorial: tutorial.html
+last_built: 2023-11-24T23:10Z
 

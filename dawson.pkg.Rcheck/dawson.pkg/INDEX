@@ -1,2 +1,3 @@
-clean                   Omit the na from data set
+clean                   Omit the N/A from a column of data
 create_bar_plot         Creates a bar plot
+perform_anova_and_lm    Omit the na from data set

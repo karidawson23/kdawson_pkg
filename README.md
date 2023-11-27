@@ -4,6 +4,10 @@
 
 ## Overview
 
+
+This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different biomarkers and reproductive output and carapce size. It can even show individual turtle nesting data. This package also has the capacity to run a 4 parametric logistic scale analysis for those who are running some sort of assay.
+
+
 The SeaTurtleDataProcessor R package is designed to facilitate the analysis and processing of sea turtle data. This package provides a set of functions to handle various tasks related to sea turtle research, including data cleaning, transformation, data analysis and visualization. Whether you are working with satellite tracking data, nesting site records, or other types of sea turtle data, this package aims to streamline your workflow.This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different bio markers and reproductive output and carapace size. It can even show individual turtle nesting data. 
 
 # Packages that you will need:
@@ -17,15 +21,12 @@ library(ggplot2)
 You can install the SeaTurtleDataProcessor package from GitHub using the devtools package. Run the following commands in your R console:
 
 ```
-install.packages("remotes")
-library(remotes)
-
 install.packages("googlesheets4")
 library(googlesheets4)
 
-remotes::install_github("karidawson23/dawson_pkg")
-install.packages("dawson_pkg")
-library(dawson_pkg)
+remotes::install_github("karidawson23/kdawson_pkg")
+install.packages("kdawson_pkg")
+library(kdawson_pkg)
 
 #data
 drago <- read_sheet("https://docs.google.com/spreadsheets/d/1ugMWcZGALxgSLfm3bensXUi6GFj77AKqoZBkH-uFhcA/edit?usp=sharing")

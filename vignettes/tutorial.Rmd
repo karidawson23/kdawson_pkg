@@ -6,9 +6,5 @@ date: "2023-11-09"
 ---
 My package is to designed to work on common endocrinologial sea turtle data which often times includes:GPA coordinates of nests, reproductive output, carapace length, and the concentrations of various biomarkers.   
 
-My package to work with the recording of nesting sea turtle data. This includes, GPA coordinates, steroid concentration, and reproductive output.   
+My package to work with the recording of nesting sea turtle data. This includes, GPA coordinates, steroid concentration, and reproductive output, reproductive output.   
 
-Dataset:
-library(googlesheets4)
-googlesheets4::gs4_deauth()
-drago <- read_sheet("https://docs.google.com/spreadsheets/d/1inuh6gbKDD46Sw8_bcE0soiMLsuV6llp24-dDbYZMhg/edit?usp=sharing")

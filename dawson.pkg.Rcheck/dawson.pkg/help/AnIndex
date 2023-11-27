@@ -1,3 +1,5 @@
+bar_plot	bar_plot
 clean	clean
-create_bar_plot	create_bar_plot
+map_nests	map_nests
 perform_anova_and_lm	perform_anova_and_lm
+sort_group_mutate	sort_group_mutate

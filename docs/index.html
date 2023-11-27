@@ -67,16 +67,55 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
+
 <div class="section level1">
-<div class="page-header"><h1 id="dawsonpkg">dawson.pkg<a class="anchor" aria-label="anchor" href="#dawsonpkg"></a>
+<div class="page-header"><h1 id="seaturtledataprocessor-r-package">SeaTurtleDataProcessor R Package<a class="anchor" aria-label="anchor" href="#seaturtledataprocessor-r-package"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="an-r-package-for-processing-sea-turtle-nesting-data">An R package for processing sea turtle nesting data<a class="anchor" aria-label="anchor" href="#an-r-package-for-processing-sea-turtle-nesting-data"></a>
 </h2>
-<p>This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different biomarkers and reproductive output and carapce size. It can even show individule turtle nesting data. This package also has the capacity to run a 4 parametric logistic scale anaylisis for those who are running some sort of assay.</p>
-<p>hiiii</p>
+</div>
+<div class="section level2">
+<h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
+</h2>
+<p>The SeaTurtleDataProcessor R package is designed to facilitate the analysis and processing of sea turtle data. This package provides a set of functions to handle various tasks related to sea turtle research, including data cleaning, transformation, data analysis and visualization. Whether you are working with satellite tracking data, nesting site records, or other types of sea turtle data, this package aims to streamline your workflow.This is for sea turtle biologists. This plots GPS coordinates, shows the relationship between different bio markers and reproductive output and carapace size. It can even show individual turtle nesting data.</p>
 </div>
 </div>
+<div class="section level1">
+<h1 id="packages-that-you-will-need">Packages that you will need:<a class="anchor" aria-label="anchor" href="#packages-that-you-will-need"></a>
+</h1>
+<pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<p>You can install the SeaTurtleDataProcessor package from GitHub using the devtools package. Run the following commands in your R console:</p>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"googlesheets4"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"karidawson23/dawson_pkg"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"dawson_pkg"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">dawson_pkg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#data</span></span>
+<span><span class="va">drago</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/1ugMWcZGALxgSLfm3bensXUi6GFj77AKqoZBkH-uFhcA/edit?usp=sharing"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
+</h2>
+<p>1st function: cleaning_data This function will remove all NA values from the data.</p>
+<pre><code><span><span class="fu">cleaning_data</span><span class="op">(</span><span class="st">"Data/surveys.csv"</span><span class="op">)</span></span></code></pre>
+<p>2nd function: create_plot This function will create a jitter plot from the data with the sex on the x-axis, weight on the y-axis, and categorized sex by color.</p>
+<pre><code><span><span class="fu">create_plot</span><span class="op">(</span><span class="st">"Data/surveys.csv"</span><span class="op">)</span></span></code></pre>
+<p>Third function: linear_model This function will generate a linear model and summary from the data with hindfoot_length as the response and weight as the predictor.</p>
+<pre><code><span><span class="fu">linear_model</span><span class="op">(</span><span class="st">"Data/surveys.csv"</span><span class="op">)</span></span></code></pre>
+<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
+</div>
+</div>
+
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

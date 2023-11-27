@@ -2,20 +2,18 @@
 % Please edit documentation in R/remove_na_function.R
 \name{clean}
 \alias{clean}
-\title{Omit the N/A from a column of data}
+\title{Omit the N/A from a specific column of data set}
 \usage{
 clean(data, column)
 }
 \arguments{
-\item{len}{Length of the object}
+\item{data}{Name of data set you are working with}
 
-\item{width}{Width of the object}
-
-\item{height}{Height of the object}
+\item{column}{The column of the data set you wish to clean}
 }
 \value{
-density The density of the object (numeric)
+Data frame with no NAs
 }
 \description{
-Omit the N/A from a column of data
+Omit the N/A from a specific column of data set
 }

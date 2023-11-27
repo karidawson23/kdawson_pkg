@@ -22,6 +22,9 @@
     <loc>/index.html</loc>
   </url>
   <url>
+    <loc>/reference/bar_plot.html</loc>
+  </url>
+  <url>
     <loc>/reference/clean.html</loc>
   </url>
   <url>
@@ -31,6 +34,12 @@
     <loc>/reference/index.html</loc>
   </url>
   <url>
+    <loc>/reference/map_nests.html</loc>
+  </url>
+  <url>
     <loc>/reference/perform_anova_and_lm.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sort_group_mutate.html</loc>
   </url>
 </urlset>

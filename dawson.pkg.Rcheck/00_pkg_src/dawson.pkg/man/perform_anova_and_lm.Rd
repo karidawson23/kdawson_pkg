@@ -2,21 +2,20 @@
 % Please edit documentation in R/stats_function.R
 \name{perform_anova_and_lm}
 \alias{perform_anova_and_lm}
-\title{Omit the na from data set}
+\title{Perform data analysis on data set to test for significance}
 \usage{
 perform_anova_and_lm(data, dependent_var, independent_var)
 }
 \arguments{
-\item{len}{Length of the object}
+\item{data}{Length of the object}
 
-\item{width}{Width of the object}
+\item{dependent_var}{Width of the object}
 
-\item{height}{Height of the object}
+\item{independent_var}{Height of the object}
 }
 \value{
 density The density of the object (numeric)
 }
 \description{
-Use the length, width, height of an object to calculate its density.
-Returns density as a floating point number.
+Perform data analysis on data set to test for significance
 }

@@ -11,12 +11,14 @@
 #'
 #'@export
 
-sort_group_mutate <- function(data, sort_column, group_column, mutate_column, summary_function = mean) {
-  result <- data %>%
-    filter(!is.na(mutate_column))
-    arrange({{ sort_column }}) %>%  # Sort the data by the specified column
-    group_by({{ group_column }}) %>%  # Group by the specified column
-    mutate(summary_stat = summary_function({{ mutate_column }}))  # Calculate summary statistic using mutate_column
+group_and_summarize <- function(data, selected_columns, group_columns, summary_function) {
+
+  stopifnot(is.data.frame(data))
   
-  return(result)
+  summarized_data <- data %>%
+    select({{selected_columns}}) %>%
+    group_by(across({{group_columns}})) %>%
+    summarize(across(everything(), summary_function, na.rm = TRUE))
+  
+  return(summarized_data)
 }

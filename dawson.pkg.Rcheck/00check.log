@@ -26,7 +26,7 @@
 * checking DESCRIPTION meta-information ... OK
 * checking top-level files ... NOTE
 Non-standard files/directories found at top level:
-  ‘README.html’ ‘Token’ ‘column_dictorary.txt’ ‘docs’ ‘end’
+  ‘README.html’ ‘Rprof.out’ ‘Token’ ‘column_dictorary.txt’ ‘docs’ ‘end’
   ‘function_practice.R’
 * checking for left-over files ... OK
 * checking index information ... OK
@@ -39,10 +39,9 @@ Non-standard files/directories found at top level:
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
 * checking loading without being on the library search path ... OK
-* checking dependencies in R code ... WARNING
-'::' or ':::' import not declared from: ‘leaflet’
+* checking dependencies in R code ... NOTE
 Namespaces in Imports field not imported from:
-  ‘broom’ ‘ggplot2’ ‘tidyverse’
+  ‘broom’ ‘ggplot2’ ‘leaflet’ ‘tidyverse’
   All declared Imports should be used.
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
@@ -54,21 +53,27 @@ bar_plot: no visible global function definition for ‘geom_bar’
 bar_plot: no visible global function definition for ‘labs’
 clean: no visible global function definition for ‘%>%’
 clean: no visible binding for global variable ‘na.omit’
+group_and_summarize: no visible global function definition for ‘%>%’
+group_and_summarize: no visible global function definition for ‘select’
+group_and_summarize: no visible global function definition for
+  ‘group_by’
+group_and_summarize: no visible global function definition for ‘across’
+group_and_summarize: no visible global function definition for
+  ‘summarize’
+group_and_summarize: no visible global function definition for
+  ‘everything’
 map_nests: no visible global function definition for ‘%>%’
+map_nests: no visible global function definition for ‘leaflet’
+map_nests: no visible binding for global variable ‘drago’
 map_nests: no visible global function definition for ‘addTiles’
 map_nests: no visible global function definition for ‘addMarkers’
-perform_anova_and_lm: no visible global function definition for ‘anova’
-perform_anova_and_lm: no visible global function definition for ‘lm’
-sort_group_mutate: no visible global function definition for ‘%>%’
-sort_group_mutate: no visible global function definition for ‘filter’
-sort_group_mutate: no visible global function definition for ‘arrange’
-sort_group_mutate: no visible global function definition for ‘group_by’
-sort_group_mutate: no visible global function definition for ‘mutate’
+normality_test: no visible global function definition for
+  ‘shapiro.test’
 Undefined global functions or variables:
-  %>% addMarkers addTiles aes anova arrange filter geom_bar ggplot
-  group_by labs lm mutate na.omit
+  %>% across addMarkers addTiles aes drago everything geom_bar ggplot
+  group_by labs leaflet na.omit select shapiro.test summarize
 Consider adding
-  importFrom("stats", "anova", "filter", "lm", "na.omit")
+  importFrom("stats", "na.omit", "shapiro.test")
 to your NAMESPACE file.
 * checking Rd files ... OK
 * checking Rd metadata ... OK
@@ -78,12 +83,19 @@ to your NAMESPACE file.
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... WARNING
 Undocumented arguments in documentation object 'bar_plot'
-  ‘x_label’ ‘y_label’
+  ‘x’ ‘y’ ‘xlab’ ‘ylab’
+Documented arguments not in \usage in documentation object 'bar_plot':
+  ‘x_var’ ‘y_var’
 
-Undocumented arguments in documentation object 'map_nests'
-  ‘data’ ‘longitude’ ‘latitude’
-Documented arguments not in \usage in documentation object 'map_nests':
-  ‘len’ ‘width’ ‘height’
+Undocumented arguments in documentation object 'group_and_summarize'
+  ‘selected_columns’ ‘group_columns’
+Documented arguments not in \usage in documentation object 'group_and_summarize':
+  ‘sort_column’ ‘group_column’ ‘mutate_column’
+
+Undocumented arguments in documentation object 'normality_test'
+  ‘col1’ ‘col2’
+Documented arguments not in \usage in documentation object 'normality_test':
+  ‘dependent_var’ ‘independent_var’
 
 Functions with \usage entries need to have the appropriate \alias
 entries, and all their arguments documented.
@@ -102,4 +114,4 @@ Files named as vignettes but with no recognized vignette engine:
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 3 WARNINGs, 2 NOTEs
+Status: 2 WARNINGs, 3 NOTEs

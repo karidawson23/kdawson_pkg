@@ -6,21 +6,21 @@
 \usage{
 bar_plot(
   data,
-  x_var,
-  y_var,
-  title = "Bar Plot",
-  x_label = NULL,
-  y_label = NULL
+  x,
+  y,
+  xlab = "X-axis Label",
+  ylab = "Y-axis Label",
+  title = "Bar Graph"
 )
 }
 \arguments{
 \item{data}{Length of the object}
 
+\item{title}{description}
+
 \item{x_var}{Width of the object}
 
 \item{y_var}{Height of the object}
-
-\item{title}{description}
 }
 \value{
 will show the plot

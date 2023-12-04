@@ -10,11 +10,12 @@
 
 
 clean <- function(data, column) { 
-  new_data <- data %>% 
+  new_drago <- data %>% 
     na.omit 
-  if (sum(is.na(new_data)) == 0){
-  return(new_data)
+  if (sum(is.na(new_drago)) == 0){
+  return(new_drago)
    } else {
     print("NAs are still at large! ")
   }
 }
+

@@ -14,15 +14,15 @@
 #'@export
 #library(ggplot2)
 
-bar_plot <- function(data, x_var, y_var, title = "Bar Plot", x_label = NULL, y_label = NULL) {
-   if (!all(is.numeric(data[[x_var]])) || !all(is.numeric(data[[y_var]]))) {
-     stop("Invalid format. Both columns should be numeric.")
-   }
-plot <- ggplot(data, aes(x = {{x_var}}, y = {{y_var}})) +
-geom_bar(stat = "identity", fill = "dodgerblue") +
-labs(title = title, x = x_label, y = y_label)
 
-print(plot)
-return(plot)
+bar_plot <- function(data, x, y, xlab = "X-axis Label", ylab = "Y-axis Label", title = "Bar Graph") {
+  # Create a ggplot bar graph
+  p <- ggplot(data, aes(x = {{x}}, y = {{y}})) +
+    geom_bar(stat = "identity", fill = "darkgreen", color = "black") +
+    labs(x = xlab, y = ylab, title = title)
+  
+  # Display the ggplot bar graph
+  print(p)
 }
+
 

@@ -1,5 +1,5 @@
 bar_plot	bar_plot
 clean	clean
+group_and_summarize	group_and_summarize
 map_nests	map_nests
-perform_anova_and_lm	perform_anova_and_lm
-sort_group_mutate	sort_group_mutate
+normality_test	normality_test

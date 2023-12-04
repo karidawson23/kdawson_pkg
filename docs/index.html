@@ -109,24 +109,46 @@
 <div class="section level2">
 <h2 id="data-info">Data Info:<a class="anchor" aria-label="anchor" href="#data-info"></a>
 </h2>
-<p>The columns of my dataset include: -sample number: Allows you to identify exactly which sample your are dealing with while also offering some information about when the sample was collect. 1 represents the begining of the nesting season and the farther you get from 1, the more time has passed. -date: The date that the sample was collected -turtle_id: Allows us to identify who the turtle is sort of like an unique identifier. We have a few repeated turtle within out data set. -e2: Concentration of steroid hormone, estradiol -test: Concentration of steroid hormone testosterone -vtg: Concentration of vitellogenin biomarker -bhb: Concentration β-hydroxybutyrate<br>
--total_protein:Concentration of circulating total protein -output: Reproductive output meaning the number of eggs laid when sample was taken -ccl: Curved carapace length -scl: Straight carapace length -latitude: Latitude coordinates of nests -longitude: Longitude coordinates of nests</p>
+<p>The columns of my dataset include:</p>
+<ol style="list-style-type: decimal">
+<li>sample number: Allows you to identify exactly which sample your are dealing with while also offering some information about when the sample was collect. 1 represents the begining of the nesting season and the farther you get from 1, the more time has passed.</li>
+<li>date: The date that the sample was collected</li>
+<li>turtle_id: Allows us to identify who the turtle is sort of like an unique identifier. We have a few repeated turtle within out data set.</li>
+<li>e2: Concentration of steroid hormone, estradiol</li>
+<li>test: Concentration of steroid hormone testosterone</li>
+<li>vtg: Concentration of vitellogenin biomarker</li>
+<li>bhb: Concentration β-hydroxybutyrate<br>
+</li>
+<li>total_protein:Concentration of circulating total protein</li>
+<li>output: Reproductive output meaning the number of eggs laid when sample was taken</li>
+<li>ccl: Curved carapace length</li>
+<li>scl: Straight carapace length</li>
+<li>latitude: Latitude coordinates of nests</li>
+<li>longitude: Longitude coordinates of nests</li>
+<li>time</li>
+</ol>
 </div>
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
-<p>My package has 5 functions that clean data by removing NA’s, Transforming the data, creating a. ar plot, performing a stats anaylsis and finally mapping the nesting coordinates onto a map.</p>
+<p>My package has 5 functions:</p>
+<ol style="list-style-type: decimal">
+<li>Clean data by removing NA’s</li>
+<li>Transforming the data</li>
+<li>Creating a bar plot</li>
+<li>Performing a stats analysis</li>
+<li>Mapping the nesting coordinates onto a map</li>
+</ol>
 <p>1st function: cleaning_data This function will remove all NA values from the data.</p>
 <pre><code><span><span class="fu"><a href="reference/clean.html">clean</a></span><span class="op">(</span><span class="va">drago</span><span class="op">)</span></span></code></pre>
 <p>2nd function: create_plot This function will create a bar plot of vtg and reproductive output</p>
-<pre><code><span><span class="fu"><a href="reference/bar_plot.html">bar_plot</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">vtg</span>, <span class="va">output</span><span class="op">)</span></span></code></pre>
+<pre><code><span><span class="fu"><a href="reference/bar_plot.html">bar_plot</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">sample_number</span>, <span class="va">output</span><span class="op">)</span></span></code></pre>
 <p>3rd function:Transform This function groups the data by the sample number and transforms a column to produce the mean of one of the data categories. In this case it is calculating the mean of the reproductive output.</p>
-<pre><code><span><span class="fu"><a href="reference/sort_group_mutate.html">sort_group_mutate</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">sample_number</span>, <span class="va">turtle_id</span>, <span class="va">output</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre>
+<pre><code><span><span class="fu"><a href="reference/group_and_summarize.html">group_and_summarize</a></span><span class="op">(</span><span class="va">drago</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">output</span>, <span class="va">bhb</span><span class="op">)</span>, <span class="st">"time"</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre>
 <p>4th function: linear_model This function will generate a linear model and summary from the data with hindfoot_length as the response and weight as the predictor.</p>
-<pre><code><span><span class="fu">linear_model</span><span class="op">(</span><span class="va">drago</span>, <span class="va">vtg</span>, <span class="va">output</span><span class="op">)</span></span></code></pre>
+<pre><code><span><span class="fu"><a href="reference/normality_test.html">normality_test</a></span><span class="op">(</span><span class="va">drago</span>, <span class="st">"output"</span>, <span class="st">"bhb"</span><span class="op">)</span></span></code></pre>
 <p>5th function: Map of nests Alot of turtle nesting data contains gps coordinates of the nests location and this function allows you to plot those locations. The points on the map are also interactive allowing you to see the turtle id of the turtle who nested. It can be useful if you needed to see over time what part of a beach has the mosty “traffic”</p>
 <pre><code><span><span class="fu"><a href="reference/map_nests.html">map_nests</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">longitude</span>, <span class="va">latitude</span><span class="op">)</span></span></code></pre>
-<p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
 </div>
 </div>
 

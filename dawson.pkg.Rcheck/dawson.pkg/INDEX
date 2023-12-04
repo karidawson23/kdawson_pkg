@@ -1,9 +1,9 @@
 bar_plot                Creates a bar plot
 clean                   Omit the N/A from a specific column of data set
+group_and_summarize     this function will be able to sort, group, and
+                        mutate data from a data set
 map_nests               This function will create a plot of the gps
                         coordinates of the nests along the beach in
                         panama
-perform_anova_and_lm    Perform data analysis on data set to test for
+normality_test          Perform data analysis on data set to test for
                         significance
-sort_group_mutate       this function will be able to sort, group, and
-                        mutate data from a data set

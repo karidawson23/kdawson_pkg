@@ -2,9 +2,120 @@
 title: "Tutorial"
 author: "KD"
 output: html_document
-date: "2023-11-09"
+date: "2023-12-04"
 ---
-My package is to designed to work on common endocrinologial sea turtle data which often times includes:GPA coordinates of nests, reproductive output, carapace length, and the concentrations of various biomarkers.   
+My package is to designed to work on common endocrinological sea turtle data which often times includes:GPA coordinates of nests, reproductive output, carapace length, and the concentrations of various biomarkers.   
 
-My package to work with the recording of nesting sea turtle data. This includes, GPA coordinates, steroid concentration, and reproductive output, reproductive output.   
+The SeaTurtleDataProcessor R package is designed to facilitate the analysis and processing of sea turtle data. This package provides a set of functions to handle various tasks related to sea turtle research, including data cleaning, transformation, data analysis and visualization. Whether you are working with satellite tracking data, nesting site records, or other types of sea turtle data, this package aims to streamline your workflow. 
 
+# Packages that you will need:
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(leaflet)
+library(dplyr)
+```
+
+## Installation
+
+You can install the SeaTurtleDataProcessor package from GitHub using the devtools package. Run the following commands in your R console:
+
+
+```{r}
+install.packages("remotes")
+library(remotes)
+
+remotes::install_github("karidawson23/kdawson_pkg")
+install.packages("kdawson_pkg")
+library(kdawson_pkg)
+
+install.packages("googlesheets4")
+library(googlesheets4)
+
+```
+
+
+```{r}
+library(googlesheets4)
+library(dplyr)
+
+#data
+drago <- read_sheet("https://docs.google.com/spreadsheets/d/11g_lm6PpiA2daKHFh-LWdNPHWmut4xmhLDmoEC4gOek/edit?usp=sharing")
+glimpse(drago)
+
+```
+## Data Info:
+
+The columns of my dataset include:
+-sample number: Allows you to identify exactly which sample your are dealing with while also offering some information about when the sample was collect. 1 represents the begining of the nesting season and the farther you get from 1, the more time has passed. 
+-date: The date that the sample was collected
+-turtle_id: Allows us to identify who the turtle is sort of like an unique identifier. We have a few repeated turtle within out data set. 
+-e2: Concentration of steroid hormone, estradiol 
+-test: Concentration of steroid hormone testosterone
+-vtg: Concentration of vitellogenin biomarker 
+-bhb: Concentration β-hydroxybutyrate  
+-total_protein:Concentration of circulating total protein 
+-output: Reproductive output meaning the number of eggs laid when sample was taken
+-ccl: Curved carapace length
+-scl: Straight carapace length
+-latitude: Latitude coordinates of nests
+-longitude: Longitude coordinates of nests
+
+
+## Functions
+My package has 5 functions that clean data by removing NA's, Transforming the data, creating a. ar plot, performing a stats analysis and finally mapping the nesting coordinates onto a map. This tutorial will go through how to use each one of them and why you might want to use it.
+
+
+1st function: cleaning_data
+This function will remove all NA values from the data. This function will provide an efficient way to remove all of the NA values that may interfere with your manipulation of the data.Once you've downloaded and saved the dataset, you simply enter it within the function to clean it. 
+```{r}
+clean(drago)
+```
+If everything worked properly, R should return the cleaned data set.
+
+2nd function: create_plot
+This function will create a bar plot of vtg and reproductive output. A big part of my own study is looking to see if there is a relationship between VTG which is a major protein precursor in egg yolk in oviparous vertebrates and reproductive output. However, depending on your own interests, you may be able to choose your own independent and dependent variable to plot. Being able to visualize data may significant help in your overall understanding of the data you collected. I think bar plots (depending on the data set) are some of the best way to visualize data especially when you are just beginning you analysis. 
+```{r}
+bar_plot(drago, sample_number, output, "sample number", "output")
+
+```
+If done correctly, there should be a bar graph of your choosen variables.
+
+```{r}
+#scatter_plot(drago, test, output)
+
+```
+
+
+## 3rd function:Transform
+The purpose of this function is to group that data and mutate it in some way. For example, with my function, 
+
+```{r}
+group_and_summarize(drago, c(time, output, bhb), "time", mean)
+
+```
+
+
+4th function: normality test
+This function will generate a linear model and summary from the data with hindfoot_length as the response and weight as the predictor. 
+
+```{r}
+normality_test(drago, "output", "bhb")
+```
+
+
+5th function: Map of nests
+
+```{r}
+map_nests(drago, longitude, latitude)
+
+```
+
+```{r}
+mymap <- leaflet(drago) %>%
+addTiles() %>%
+addMarkers(lng = ~longitude, lat = ~latitude, popup = ~turtle_id)
+
+mymap
+
+```

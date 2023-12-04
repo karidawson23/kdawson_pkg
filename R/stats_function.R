@@ -10,22 +10,33 @@
 #'@export
 #'
 
-perform_anova_and_lm <- function(data, dependent_var, independent_var){
-  anova_result <- anova(lm({{dependent_var}} ~ {{independent_var}}, data = data))
-  lm_result <- lm({{dependent_var}} ~ {{independent_var}}, data = data)
-  return(list(ANOVA = anova_result, LM = summary(lm_result)))
+# Function to run a normality test for the interaction between two columns of a data frame
+normality_test <- function(data, col1, col2) {
+  # Check if the specified columns exist in the data frame
+  if (!all(c(col1, col2) %in% names(data))) {
+    stop("Specified columns not found in the data frame.")
+  }
   
-  print(anova_result)
-  print(lm_result)
+  # Create the interaction term
+  interaction_term <- data[[col1]] * data[[col2]]
+  
+  # Run the Shapiro-Wilk test for the interaction term
+  result_interaction <- shapiro.test(interaction_term)
+  
+  # Print the test results
+  cat("Shapiro-Wilk Normality Test for Interaction between Columns '", col1, "' and '", col2, "':\n")
+  cat("Test Statistic =", result_interaction$statistic, "\n")
+  cat("p-value =", result_interaction$p.value, "\n")
+  
+  # Interpret the results for the interaction term
+  cat("\nInterpretation:\n")
+  if (result_interaction$p.value < 0.05) {
+    cat("Interaction term is not normally distributed.\n")
+  } else {
+    cat("Interaction term appears to be normally distributed.\n")
+  }
+  
+  # Return the test results
+  return(result_interaction)
 }
 
-#results <- perform_anova_and_lm(data, DependentVar, IndependentVar)
-
-#print("ANOVA Results:")
-#print(results$ANOVA)
-#print("\nLinear Regression Results:")
-#print(results$LM)
-
-
-
-# This function will run both an lm and anova on the dataset entered 

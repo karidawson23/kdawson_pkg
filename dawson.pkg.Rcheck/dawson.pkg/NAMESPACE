@@ -2,6 +2,6 @@
 
 export(bar_plot)
 export(clean)
+export(group_and_summarize)
 export(map_nests)
-export(perform_anova_and_lm)
-export(sort_group_mutate)
+export(normality_test)

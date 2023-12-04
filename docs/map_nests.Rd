@@ -7,14 +7,14 @@
 map_nests(data, longitude, latitude)
 }
 \arguments{
-\item{len}{Length of the object}
+\item{data}{drago data set}
 
-\item{width}{Width of the object}
+\item{longitude}{longitude column}
 
-\item{height}{Height of the object}
+\item{latitude}{latitude column}
 }
 \value{
-density The density of the object (numeric)
+interactive map of the nest locations
 }
 \description{
 This function will create a plot of the gps coordinates of the nests along the beach in panama

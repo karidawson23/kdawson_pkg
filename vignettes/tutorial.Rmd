@@ -22,14 +22,13 @@ You can install the SeaTurtleDataProcessor package from GitHub using the devtool
 
 
 ```{r}
-install.packages("remotes")
+#install.packages("remotes")
 library(remotes)
 
 remotes::install_github("karidawson23/kdawson_pkg")
-install.packages("kdawson_pkg")
-library(kdawson_pkg)
+library(dawson.pkg)
 
-install.packages("googlesheets4")
+#install.packages("googlesheets4")
 library(googlesheets4)
 
 ```
@@ -40,6 +39,7 @@ library(googlesheets4)
 library(dplyr)
 
 #data
+gs4_deauth()
 drago <- read_sheet("https://docs.google.com/spreadsheets/d/11g_lm6PpiA2daKHFh-LWdNPHWmut4xmhLDmoEC4gOek/edit?usp=sharing")
 glimpse(drago)
 
@@ -79,7 +79,7 @@ This function will create a bar plot of vtg and reproductive output. A big part 
 bar_plot(drago, sample_number, output, "sample number", "output")
 
 ```
-If done correctly, there should be a bar graph of your choosen variables.
+If done correctly, there should be a bar graph of your chosen variables.
 
 ```{r}
 #scatter_plot(drago, test, output)

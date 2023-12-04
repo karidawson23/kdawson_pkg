@@ -71,7 +71,7 @@
       <h1 data-toc-skip>Tutorial</h1>
                         <h4 data-toc-skip class="author">KD</h4>
             
-            <h4 data-toc-skip class="date">2023-11-09</h4>
+            <h4 data-toc-skip class="date">2023-12-04</h4>
       
       
       <div class="hidden name"><code>tutorial.Rmd</code></div>
@@ -80,18 +80,210 @@
 
     
     
-<p>My package is to designed to work on common endocrinologial sea
+<p>My package is to designed to work on common endocrinological sea
 turtle data which often times includes:GPA coordinates of nests,
 reproductive output, carapace length, and the concentrations of various
 biomarkers.</p>
-<p>My package to work with the recording of nesting sea turtle data.
-This includes, GPA coordinates, steroid concentration, and reproductive
-output, reproductive output.</p>
+<p>The SeaTurtleDataProcessor R package is designed to facilitate the
+analysis and processing of sea turtle data. This package provides a set
+of functions to handle various tasks related to sea turtle research,
+including data cleaning, transformation, data analysis and
+visualization. Whether you are working with satellite tracking data,
+nesting site records, or other types of sea turtle data, this package
+aims to streamline your workflow.</p>
+<div class="section level2">
+<h2 id="packages-that-you-will-need">Packages that you will need:<a class="anchor" aria-label="anchor" href="#packages-that-you-will-need"></a>
+</h2>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.4</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.1</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.4.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.3     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.0</span></span>
+<span><span class="co">## <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2     </span></span>
+<span><span class="co">## ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
+<span><span class="co">## <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
+<span><span class="co">## <span style="color: #00BBBB;">ℹ</span> Use the conflicted package (<span style="color: #0000BB; font-style: italic;">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors</span></span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h3>
+<p>You can install the SeaTurtleDataProcessor package from GitHub using
+the devtools package. Run the following commands in your R console:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#install.packages("remotes")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://remotes.r-lib.org" class="external-link">remotes</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"karidawson23/kdawson_pkg"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Downloading GitHub repo karidawson23/kdawson_pkg@HEAD</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">## * checking for file ‘/tmp/RtmpPvKnXU/remotes80b6e622d82/karidawson23-kdawson_pkg-a849687/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">## * preparing ‘dawson.pkg’:</span></span>
+<span><span class="co">## * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">## * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">## * checking for empty or unneeded directories</span></span>
+<span><span class="co">## * building ‘dawson.pkg_0.1.tar.gz’</span></span>
+<span><span class="co">## Warning: invalid uid value replaced by that for user 'nobody'</span></span></code></pre>
+<pre><code><span><span class="co">## Installing package into '/tmp/Rtmpp8JLvA/temp_libpath4c654aad10c'</span></span>
+<span><span class="co">## (as 'lib' is unspecified)</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">dawson.pkg</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#install.packages("googlesheets4")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://googlesheets4.tidyverse.org" class="external-link">googlesheets4</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#data</span></span>
+<span><span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/gs4_deauth.html" class="external-link">gs4_deauth</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">drago</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/11g_lm6PpiA2daKHFh-LWdNPHWmut4xmhLDmoEC4gOek/edit?usp=sharing"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">✔</span> Reading from <span style="color: #00BBBB;">drago_R</span>.</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">✔</span> Range <span style="color: #BBBB00;">drago_R</span>.</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">drago</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Rows: 49</span></span>
+<span><span class="co">## Columns: 15</span></span>
+<span><span class="co">## $ sample_number <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…</span></span>
+<span><span class="co">## $ date          <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span> 2023-05-27, 2023-05-30, 2023-05-31, 2023-06-02, 2023-06…</span></span>
+<span><span class="co">## $ turtle_id     <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> "63/64", "56/57", 2023-10-11, "23/30", "65/66", "68/69"…</span></span>
+<span><span class="co">## $ e2            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 6, 7, 5, 7, 6, 6, 15, 11, 13, 5, 6, 12, 10, 9, 7, 6, 13,…</span></span>
+<span><span class="co">## $ vtg           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 128, 162, 90, 234, 58, 519, 698, 389, 875, 569, NA, 406,…</span></span>
+<span><span class="co">## $ test          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> NA, NA, 2284.10, NA, 1731.60, NA, NA, 2227.40, 1555.50, …</span></span>
+<span><span class="co">## $ trig          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 808.0, 868.6, 957.0, 292.6, 887.7, 947.7, 1496.0, 905.8,…</span></span>
+<span><span class="co">## $ bhb           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 452.3, 386.8, 522.4, 522.4, 470.4, 760.8, 832.9, 333.9, …</span></span>
+<span><span class="co">## $ total_protein <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 31.49, 26.50, 25.60, 22.20, 22.50, 22.20, 23.60, 26.40, …</span></span>
+<span><span class="co">## $ output        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 150, 127, 158, NA, NA, 115, 126, 160, 154, 133, 161, NA,…</span></span>
+<span><span class="co">## $ ccl           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> 81.96, 87.86, 88.7, 89.5, 81.27, 83.53, 87.6, 88.13, 92…</span></span>
+<span><span class="co">## $ scl           <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> 83.96, 80.5, 80.8, 76.3, &lt;NULL&gt;, 79.9, 73, 81.4, 79.54,…</span></span>
+<span><span class="co">## $ latitude      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 9.42860, 9.43225, 9.42797, 9.42874, 9.42877, 9.42870, 9.…</span></span>
+<span><span class="co">## $ longitude     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> -82.31816, -82.30115, -82.31212, -82.31879, -82.31893, -…</span></span>
+<span><span class="co">## $ time          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2,…</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="data-info">Data Info:<a class="anchor" aria-label="anchor" href="#data-info"></a>
+</h3>
+<p>The columns of my dataset include: -sample number: Allows you to
+identify exactly which sample your are dealing with while also offering
+some information about when the sample was collect. 1 represents the
+begining of the nesting season and the farther you get from 1, the more
+time has passed. -date: The date that the sample was collected
+-turtle_id: Allows us to identify who the turtle is sort of like an
+unique identifier. We have a few repeated turtle within out data set.
+-e2: Concentration of steroid hormone, estradiol -test: Concentration of
+steroid hormone testosterone -vtg: Concentration of vitellogenin
+biomarker -bhb: Concentration β-hydroxybutyrate<br>
+-total_protein:Concentration of circulating total protein -output:
+Reproductive output meaning the number of eggs laid when sample was
+taken -ccl: Curved carapace length -scl: Straight carapace length
+-latitude: Latitude coordinates of nests -longitude: Longitude
+coordinates of nests</p>
+</div>
+<div class="section level3">
+<h3 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
+</h3>
+<p>My package has 5 functions that clean data by removing NA’s,
+Transforming the data, creating a. ar plot, performing a stats analysis
+and finally mapping the nesting coordinates onto a map. This tutorial
+will go through how to use each one of them and why you might want to
+use it.</p>
+<p>1st function: cleaning_data This function will remove all NA values
+from the data. This function will provide an efficient way to remove all
+of the NA values that may interfere with your manipulation of the
+data.Once you’ve downloaded and saved the dataset, you simply enter it
+within the function to clean it.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/clean.html">clean</a></span><span class="op">(</span><span class="va">drago</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 23 × 15</span></span></span>
+<span><span class="co">##    sample_number date                turtle_id     e2   vtg   test  trig   bhb</span></span>
+<span><span class="co">##            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>             3 2023-05-31 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;dttm [1]&gt;</span>     5    90 <span style="text-decoration: underline;">2</span>284.   957   522.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>             8 2023-06-15 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;dttm [1]&gt;</span>    11   389 <span style="text-decoration: underline;">2</span>227.   906.  334.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>             9 2023-06-17 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>     13   875 <span style="text-decoration: underline;">1</span>556.   720.  108 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>            10 2023-06-22 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>      5   569 <span style="text-decoration: underline;">2</span>856    984.  228.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>            14 2023-06-27 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>      9   442  392.   469.  673.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>            15 2023-06-27 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>      7   816 <span style="text-decoration: underline;">3</span>609.   724.  273.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>            17 2023-06-28 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>     13   112 <span style="text-decoration: underline;">3</span>388.  <span style="text-decoration: underline;">1</span>330.  124.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>            21 2023-07-05 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>      9    96 <span style="text-decoration: underline;">1</span>199.   718.  386.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>            23 2023-07-09 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>      5   461   45.2  257   589.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>            25 2023-07-11 <span style="color: #949494;">00:00:00</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>     12   139 <span style="text-decoration: underline;">3</span>095.  <span style="text-decoration: underline;">1</span>123   677.</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 13 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 7 more variables: total_protein &lt;dbl&gt;, output &lt;dbl&gt;, ccl &lt;list&gt;,</span></span></span>
+<span><span class="co">## <span style="color: #949494;">#   scl &lt;list&gt;, latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, time &lt;dbl&gt;</span></span></span></code></pre>
+<p>If everything worked properly, R should return the cleaned data
+set.</p>
+<p>2nd function: create_plot This function will create a bar plot of vtg
+and reproductive output. A big part of my own study is looking to see if
+there is a relationship between VTG which is a major protein precursor
+in egg yolk in oviparous vertebrates and reproductive output. However,
+depending on your own interests, you may be able to choose your own
+independent and dependent variable to plot. Being able to visualize data
+may significant help in your overall understanding of the data you
+collected. I think bar plots (depending on the data set) are some of the
+best way to visualize data especially when you are just beginning you
+analysis.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/bar_plot.html">bar_plot</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">sample_number</span>, <span class="va">output</span>, <span class="st">"sample number"</span>, <span class="st">"output"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Warning: Removed 11 rows containing missing values (`position_stack()`).</span></span></code></pre>
+<p><img src="tutorial_files/figure-html/unnamed-chunk-5-1.png" width="700">
+If done correctly, there should be a bar graph of your chosen
+variables.</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#scatter_plot(drago, test, output)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="rd-functiontransform">3rd function:Transform<a class="anchor" aria-label="anchor" href="#rd-functiontransform"></a>
+</h3>
+<p>The purpose of this function is to group that data and mutate it in
+some way. For example, with my function,</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/group_and_summarize.html">group_and_summarize</a></span><span class="op">(</span><span class="va">drago</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">output</span>, <span class="va">bhb</span><span class="op">)</span>, <span class="st">"time"</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
+<span><span class="co">##    time output   bhb</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>     1   138.  923.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span>     2   134.  430.</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span>     3   145.  685.</span></span></code></pre>
+<p>4th function: normality test This function will generate a linear
+model and summary from the data with hindfoot_length as the response and
+weight as the predictor.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/normality_test.html">normality_test</a></span><span class="op">(</span><span class="va">drago</span>, <span class="st">"output"</span>, <span class="st">"bhb"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Shapiro-Wilk Normality Test for Interaction between Columns ' output ' and ' bhb ':</span></span>
+<span><span class="co">## Test Statistic = 0.3800933 </span></span>
+<span><span class="co">## p-value = 1.698594e-11 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Interpretation:</span></span>
+<span><span class="co">## Interaction term is not normally distributed.</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">##  Shapiro-Wilk normality test</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## data:  interaction_term</span></span>
+<span><span class="co">## W = 0.38009, p-value = 1.699e-11</span></span></code></pre>
+<p>5th function: Map of nests</p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/map_nests.html">map_nests</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">longitude</span>, <span class="va">latitude</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mymap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/leaflet.html" class="external-link">leaflet</a></span><span class="op">(</span><span class="va">drago</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">addTiles</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/leaflet/man/map-layers.html" class="external-link">addMarkers</a></span><span class="op">(</span>lng <span class="op">=</span> <span class="op">~</span><span class="va">longitude</span>, lat <span class="op">=</span> <span class="op">~</span><span class="va">latitude</span>, popup <span class="op">=</span> <span class="op">~</span><span class="va">turtle_id</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">mymap</span></span></code></pre></div>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

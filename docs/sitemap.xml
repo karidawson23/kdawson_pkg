@@ -31,10 +31,16 @@
     <loc>/reference/create_bar_plot.html</loc>
   </url>
   <url>
+    <loc>/reference/group_and_summarize.html</loc>
+  </url>
+  <url>
     <loc>/reference/index.html</loc>
   </url>
   <url>
     <loc>/reference/map_nests.html</loc>
+  </url>
+  <url>
+    <loc>/reference/normality_test.html</loc>
   </url>
   <url>
     <loc>/reference/perform_anova_and_lm.html</loc>

@@ -86,7 +86,9 @@
 <h1 id="packages-that-you-will-need">Packages that you will need:<a class="anchor" aria-label="anchor" href="#packages-that-you-will-need"></a>
 </h1>
 <pre><code><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/leaflet/" class="external-link">leaflet</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></code></pre>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -102,7 +104,7 @@
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">kdawson_pkg</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data</span></span>
-<span><span class="va">drago</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/11g_lm6PpiA2daKHFh-LWdNPHWmut4xmhLDmoEC4gOek/edit?usp=sharing"</span><span class="op">)</span></span></code></pre>
+<span><span class="va">drago</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://googlesheets4.tidyverse.org/reference/range_read.html" class="external-link">read_sheet</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/11g_lm6PpiA2daKHFh-LWdNPHWmut4xmhLDmoEC4gOek/edit#gid=2036229186"</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="data-info">Data Info:<a class="anchor" aria-label="anchor" href="#data-info"></a>
@@ -118,11 +120,11 @@
 <pre><code><span><span class="fu"><a href="reference/clean.html">clean</a></span><span class="op">(</span><span class="va">drago</span><span class="op">)</span></span></code></pre>
 <p>2nd function: create_plot This function will create a bar plot of vtg and reproductive output</p>
 <pre><code><span><span class="fu"><a href="reference/bar_plot.html">bar_plot</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">vtg</span>, <span class="va">output</span><span class="op">)</span></span></code></pre>
-<p>3rd function:Transform</p>
+<p>3rd function:Transform This function groups the data by the sample number and transforms a column to produce the mean of one of the data categories. In this case it is calculating the mean of the reproductive output.</p>
 <pre><code><span><span class="fu"><a href="reference/sort_group_mutate.html">sort_group_mutate</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">sample_number</span>, <span class="va">turtle_id</span>, <span class="va">output</span>, <span class="va">mean</span><span class="op">)</span></span></code></pre>
 <p>4th function: linear_model This function will generate a linear model and summary from the data with hindfoot_length as the response and weight as the predictor.</p>
-<pre><code><span><span class="fu">linear_model</span><span class="op">(</span><span class="st">"Data/surveys.csv"</span><span class="op">)</span></span></code></pre>
-<p>5th function: Map of nests</p>
+<pre><code><span><span class="fu">linear_model</span><span class="op">(</span><span class="va">drago</span>, <span class="va">vtg</span>, <span class="va">output</span><span class="op">)</span></span></code></pre>
+<p>5th function: Map of nests Alot of turtle nesting data contains gps coordinates of the nests location and this function allows you to plot those locations. The points on the map are also interactive allowing you to see the turtle id of the turtle who nested. It can be useful if you needed to see over time what part of a beach has the mosty “traffic”</p>
 <pre><code><span><span class="fu"><a href="reference/map_nests.html">map_nests</a></span><span class="op">(</span><span class="va">drago</span>, <span class="va">longitude</span>, <span class="va">latitude</span><span class="op">)</span></span></code></pre>
 <p>You’ll still need to render <code>README.Rmd</code> regularly, to keep <code>README.md</code> up-to-date. <code><a href="https://devtools.r-lib.org/reference/build_rmd.html" class="external-link">devtools::build_readme()</a></code> is handy for this. You could also use GitHub Actions to re-render <code>README.Rmd</code> every time you push. An example workflow can be found here: <a href="https://github.com/r-lib/actions/tree/v1/examples" class="external-link uri">https://github.com/r-lib/actions/tree/v1/examples</a>.</p>
 </div>
